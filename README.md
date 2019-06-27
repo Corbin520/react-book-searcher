@@ -6,7 +6,7 @@
 
   * [Saved](Saved.png) - Renders all books saved to the Mongo database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the Mongo database.
 
-1. Start by using the 07-Ins_Mern example as a base for your application.
+<!-- 1. Start by using the 07-Ins_Mern example as a base for your application. -->
 
 2. Add code to connect to a MongoDB database named `googlebooks` using the mongoose npm package.
 
