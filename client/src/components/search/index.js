@@ -29,7 +29,6 @@ function Search() {
         <>
             <form>
                 <div className="form-group">
-                    {/* Target is whatever is whatever caused the event */}
                     <input type="text" className="form-control" value={searchTerm} 
                     onChange={(event) =>  setSearchTerm(event.target.value)}
                     id="search-here" aria-describedby="searchHelp" placeholder="Search a book here" />
@@ -37,20 +36,33 @@ function Search() {
                 <button type="submit" className="btn btn-primary" id="submit-button" 
                 onClick={handleSearchClicked}>Submit</button>
             </form>
-            <ul>
-                {console.log(books)}
+
+            {/* Card */}
+            <div className="card">
                 {books.map((book) => (
-                    <li key={book.id}>
-                        <p>{book.volumeInfo.title}</p>
-                        {/* <p>{subtitle}</p> */}
-                        <p>{book.volumeInfo.author || book.volumeInfo.authors}</p>
-                        {/* <p>{description}</p> */}
-                        {/* <p>{image}</p> */}
-                    </li>
+                    <div key={book.id}>
+                        <img src={book.volumeInfo.imageLinks.smallThumbnail} class="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">Title: {book.volumeInfo.title}</h5>
+                            <p className="card-text">Discription: {book.volumeInfo.description}</p>
+                            {/* add subtitle */}
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">{book.volumeInfo.author || book.volumeInfo.authors}</li>
+                        </ul>
+                        
+                    </div>
                 ))}
-            </ul>
+        
+            </div>
         </>
     )
 }
+
+{/* <p>{book.volumeInfo.title}</p>
+{/* <p>{subtitle}</p> */}
+{/* <p>{book.volumeInfo.author || book.volumeInfo.authors}</p> */}
+{/* <p>{book.volumeInfo.description}</p> */}
+{/* <p>{book.volumeInfo.imageLinks.smallThumbnail}</p>   */}
 
 export default Search;
