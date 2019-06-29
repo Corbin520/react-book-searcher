@@ -10,11 +10,9 @@ function Search() {
 
     function handleSearchClicked(event) {
         event.preventDefault()
-        // find this at axios site + install axios
         // searchTerm.trim() is "" then don't make request
-        axios.get("https://www.googleapis.com/books/v1/volumes?q=dog")
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
         // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
-        // from the website: "https://www.googleapis.com/books/v1/volumes?q=search+terms"
         .then(function(response) {
             setBooks(
                 response.data.items
@@ -50,7 +48,7 @@ function Search() {
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">{book.volumeInfo.author || book.volumeInfo.authors}</li>
                         </ul>
-                        
+                        <a href="#" className="save-button">Save Book</a>
                     </div>
                 ))}
         
