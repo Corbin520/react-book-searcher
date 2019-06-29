@@ -4,24 +4,27 @@ import axios from "axios"
 
 function Search() {
 
-    // hook
+    // hooks
     const [searchTerm, setSearchTerm] = useState("")
     const [books, setBooks] = useState([]);
 
     function handleSearchClicked(event) {
         event.preventDefault()
-        // searchTerm.trim() is "" then don't make request
+
+        if (searchTerm.trim() === "") {
+            alert("You did not search anything")
+        }
+        else {
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
-        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
         .then(function(response) {
             setBooks(
                 response.data.items
             );
         })
         .catch(function (error) {
-            // handle error
             console.log(error); }
         )};
+    }
     
     return (
         <>
@@ -39,7 +42,8 @@ function Search() {
             <div className="card">
                 {books.map((book) => (
                     <div key={book.id}>
-                        <img src={book.volumeInfo.imageLinks.smallThumbnail} class="card-img-top" alt="..." />
+
+                        <img src={book.volumeInfo.imageLinks.smallThumbnail || book.volumeInfo.imageLinks.thumbnail} class="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Title: {book.volumeInfo.title}</h5>
                             <p className="card-text">Discription: {book.volumeInfo.description}</p>
@@ -48,7 +52,8 @@ function Search() {
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">{book.volumeInfo.author || book.volumeInfo.authors}</li>
                         </ul>
-                        <a href="#" className="save-button">Save Book</a>
+                        <button type="button" className="btn btn-secondary btn-lg btn-block" 
+                        id="save-button">Save Book</button>
                     </div>
                 ))}
         
@@ -56,11 +61,4 @@ function Search() {
         </>
     )
 }
-
-{/* <p>{book.volumeInfo.title}</p>
-{/* <p>{subtitle}</p> */}
-{/* <p>{book.volumeInfo.author || book.volumeInfo.authors}</p> */}
-{/* <p>{book.volumeInfo.description}</p> */}
-{/* <p>{book.volumeInfo.imageLinks.smallThumbnail}</p>   */}
-
 export default Search;
