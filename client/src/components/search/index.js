@@ -11,10 +11,11 @@ function Search() {
     function handleSaveBook(book) {
         console.log(book)
         axios.post("/api/books", {
+            googleId: book.id,
             title: book.volumeInfo.title,
             subtitle: null,
-            author: book.volumeInfo.author || book.volumeInfo.authors,
-            link: null,
+            author: book.volumeInfo.authors[0],
+            // link: null,
             discription: book.volumeInfo.description,
             image: book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail,
            

@@ -22,11 +22,11 @@ module.exports = {
   },
   create: function(req, res) {
     // creating it in the DB
-    console.log("yo");
+    console.log("Createing...");
     db.Book
       .create(req.body)
       .then(dbModel => {
-        console.log("???????????")
+        console.log("*Created*")
         console.log(dbModel);
         res.json(dbModel);
       })
@@ -41,6 +41,7 @@ module.exports = {
   remove: function(req, res) {
     // when someone clicks the delete button, remove it
     db.Book
+      console.log("Deleting....")
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
