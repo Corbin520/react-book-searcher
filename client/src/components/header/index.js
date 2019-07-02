@@ -11,7 +11,7 @@ function Header(props) {
     <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
         <li className="nav-item-search active">
-            <a className="nav-link" href="#">Searched <span className="sr-only">(current)</span></a>
+            <a className="nav-link" href="/">Searched <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item-saved active">
             <a className="nav-link" href="/saved">Saved <span className="sr-only">(current)</span></a>

@@ -30,11 +30,6 @@ import API from "../utils/API";
           .catch(err => console.log(err));
       };
     
-      deleteBook = id => {
-        API.deleteBook(id)
-          .then(res => this.loadBooks())
-          .catch(err => console.log(err));
-      };
     
       handleInputChange = event => {
         const { name, value } = event.target;

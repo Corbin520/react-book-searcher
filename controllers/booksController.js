@@ -3,9 +3,10 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    // after its in the DB (Which is working) grab all this information
-    // and post it on the other page
+    // grab this data and display it on the "/saved" page
+    console.log("Loading all saved books....")
     db.Book
+    console.log("*Finished*")
       .find(req.query)
       .sort({ date: -1 })
       .then(dbModel => {

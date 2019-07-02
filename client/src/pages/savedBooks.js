@@ -1,22 +1,28 @@
+import React, { Component } from "react"
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Header from "../components/header";
+import Title from "../components/title";
+import API from "../utils/API";
+import SavedBook from "./bookSearch";
 
 
-    // import React, { Component } from "react"
-    // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-    // import Header from "../components/header";
-    // import Title from "../components/title";
 
-    // class Saved extends Component {
-    //     state = {
+    class Saved extends Component {
+        state = {
+            books: [],
+            title: "",
+            author: "",
+            synopsis: ""
+        }
+        render() {
+            return(
+                <>
+                    <Header />
+                    <Title />
+                    <SavedBook />
+                </>
+            )
+        }
+    }
 
-    //     }
-    //     Render() {
-    //         return(
-    //             <>
-    //                 <Header />
-    //                 <Title />
-    //             </>
-    //         )
-    //     }
-    // }
-
-    // export default Saved
+    export default Saved

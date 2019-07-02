@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Books from "./pages/bookSearch";
-import Saved from "./pages/savedBooks";
+import Saved from "./pages/savedBooks"
 
 function App() {
     return (
