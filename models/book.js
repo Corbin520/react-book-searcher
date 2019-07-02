@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema ({
-    title: { type: String, required: true },
+    title: { type: String },
     subtitle: String,
-    author: { type: String, required: true},
-    link: { type: String, required: true},
-    discription: { type: String, required: true },
-    image: { type: String, required: true },
-    googleId: { type: String, required: true, unique: true}
+    author: { type: String},
+    link: { type: String},
+    discription: { type: String },
+    image: { type: String },
+    googleId: { type: String, unique: true}
 
 });
 

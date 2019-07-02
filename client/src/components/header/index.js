@@ -14,7 +14,7 @@ function Header(props) {
             <a className="nav-link" href="#">Searched <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item-saved active">
-            <a className="nav-link" href="#">Saved <span className="sr-only">(current)</span></a>
+            <a className="nav-link" href="/saved">Saved <span className="sr-only">(current)</span></a>
         </li>
         </ul>
     </div>

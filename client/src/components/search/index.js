@@ -8,6 +8,24 @@ function Search() {
     const [searchTerm, setSearchTerm] = useState("")
     const [books, setBooks] = useState([]);
 
+    function handleSaveBook(book) {
+        console.log(book)
+        axios.post("/api/books", {
+            title: book.volumeInfo.title,
+            subtitle: null,
+            author: book.volumeInfo.author || book.volumeInfo.authors,
+            link: null,
+            discription: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail,
+           
+        }).then(function(response) {
+            console.log("this is your response: " + response)
+
+        }).catch(function (err) {
+            console.log("this is your error" + err)
+        })
+    }
+
     function handleSearchClicked(event) {
         event.preventDefault()
 
@@ -43,17 +61,17 @@ function Search() {
                 {books.map((book) => (
                     <div key={book.id}>
 
-                        <img src={book.volumeInfo.imageLinks.smallThumbnail || book.volumeInfo.imageLinks.thumbnail} class="card-img-top" alt="..." />
+                        <img src={book.volumeInfo.imageLinks.smallThumbnail || book.volumeInfo.imageLinks.thumbnail} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Title: {book.volumeInfo.title}</h5>
-                            <p className="card-text">Discription: {book.volumeInfo.description}</p>
+                            <p className="card-discription">Discription: {book.volumeInfo.description}</p>
                             {/* add subtitle */}
                         </div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">{book.volumeInfo.author || book.volumeInfo.authors}</li>
                         </ul>
                         <button type="button" className="btn btn-secondary btn-lg btn-block" 
-                        id="save-button">Save Book</button>
+                        id="save-button" onClick={(event) => handleSaveBook(book)}>Save Book</button>
                     </div>
                 ))}
         
