@@ -10,34 +10,7 @@ import API from "../utils/API";
     
 // create a class with the state of the page
  class Books extends Component {
-
-    state = {
-        books: [],
-        title: "",
-        author: "",
-        synopsis: ""
-      };
-    
-      componentDidMount() {
-        this.loadBooks();
-      }
-    
-      loadBooks = () => {
-        API.getBooks()
-          .then(res =>
-            this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-          )
-          .catch(err => console.log(err));
-      };
-    
-    
-      handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-      };
-    
+ 
       handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.title && this.state.author) {

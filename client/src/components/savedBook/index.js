@@ -2,10 +2,10 @@ import React from "react"
 import "./savedBook.css"
 import axios from "axios";
 
-function SavedBook() {
+function SavedBook(event) {
     
     // function for getting our saved books
-    function GetSavedBooks() {
+    function GetSavedBooks(book) {
         console.log("GetSavedBooks function firing off")
         axios.get("/saved", {
             
@@ -25,7 +25,7 @@ function SavedBook() {
     }
 
     // function for deleting books
-    function DeleteBook() {
+    function deleteBook() {
         console.log("Deleted Book Function firing off")
         axios.delete("", {
 
@@ -42,9 +42,19 @@ function SavedBook() {
         // Build out the card in here
             // get all the stored info for the card
             // change the button to delete + call the delete function (onChange)
+            // we need to .map() over the deleteBook response
         <div>
-            <h1>Saved Books go here</h1>
+            <div className="savedBookCard card">
+                <img src="addImage" className="savedBook-image" alt="" />
+                <div className="savedBook-card-body">
+                    <h5 className="savedBook-title">Title: </h5>
+                    <p className="savedBook-discription">Discription: </p>
+                    <p className="savedBook-author">Author:</p>
+                    <button type="button" className="btn btn-danger btn-lg btn-block" onClick={deleteBook}>Delete Book</button>
+                </div>
+            </div>
         </div>
+    
     )
 }
 
